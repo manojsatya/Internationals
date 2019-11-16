@@ -1,26 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import Title from "./Title";
 import styled from "styled-components/macro";
 
 export default function Add() {
+  const [country, setCountry] = useState("");
+  const [name, setName] = useState("");
+  const [nameWarning, setNameWarning] = useState("");
+  const [countryWarning, setCountryWarning] = useState("");
   return (
     <div>
       <Title />
-      <FormStyled>
-        <label>Enter a name:</label>
-        <InputStyled type="text" name="name" placeholder="Enter a name..." />
-        <label>Country of origin:</label>
-        <select>
-          <option value="germany">Germany</option>
-          <option value="spain">Spain</option>
-          <option value="italy">Italy</option>
-          <option value="turkey">Turkey</option>
-          <option value="india">India</option>
-        </select>
+      <FormStyled onSubmit={handleSubmit}>
+        <section>
+          <LabelStyled>Enter a name:</LabelStyled>
+          <InputStyled
+            type="text"
+            name="name"
+            placeholder="Enter a name..."
+            autoComplete="off"
+            autoFocus
+            value={name}
+            onChange={event => setName(event.target.value)}
+          />
+          <FormWarnings>{nameWarning}</FormWarnings>
+        </section>
+        <section>
+          <LabelStyled>Country of origin:</LabelStyled>
+          <SelectStyled
+            onChange={event => setCountry(event.target.value)}
+            value={country}
+            name="country"
+          >
+            <option value="">Select here</option>
+            <option value="Germany">Germany</option>
+            <option value="Spain">Spain</option>
+            <option value="Italy">Italy</option>
+            <option value="Turkey">Turkey</option>
+            <option value="India">India</option>
+          </SelectStyled>
+          <FormWarnings>{countryWarning}</FormWarnings>
+        </section>
         <button type="submit">Add</button>
       </FormStyled>
     </div>
   );
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    if (data.name === "") {
+      setNameWarning("*Please enter name");
+    } else if (data.country === "") {
+      setNameWarning("");
+      setCountryWarning("*Please select the country");
+    } else {
+      setNameWarning("");
+      setCountryWarning("");
+      console.log(data);
+      form.reset();
+      setName("");
+      setCountry("");
+    }
+  }
 }
 
 const InputStyled = styled.input`
@@ -29,9 +72,25 @@ const InputStyled = styled.input`
 `;
 
 const FormStyled = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-rows: 40px 40px 40px;
+  margin: 10px auto;
   justify-content: space-around;
-  max-width: 300px;
+  max-width: 500px;
+`;
+
+const LabelStyled = styled.label`
+  margin: 10px;
+`;
+
+const SelectStyled = styled.select`
+  width: 120px;
+  height: 30px;
+  outline: none;
+  font-size: 1.1rem;
+`;
+
+const FormWarnings = styled.p`
+  color: red;
 `;
