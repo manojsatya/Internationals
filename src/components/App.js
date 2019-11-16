@@ -9,7 +9,6 @@ function App() {
   return (
     <div>
       <GlobalStyles />
-
       <Router>
         <Switch>
           <Route exact path="/" component={List} />
