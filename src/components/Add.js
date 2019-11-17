@@ -40,6 +40,11 @@ export default function Add() {
             <option value="Italy">Italy</option>
             <option value="Turkey">Turkey</option>
             <option value="India">India</option>
+            <option value="France">France</option>
+            <option value="Greece">Greece</option>
+            <option value="China">China</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Argentina">Argentina</option>
           </SelectStyled>
           <FormWarnings>{countryWarning}</FormWarnings>
         </section>
@@ -61,7 +66,7 @@ export default function Add() {
     } else {
       setNameWarning("");
       setCountryWarning("");
-      console.log(data);
+      // console.log(data);
       postMember(data);
       form.reset();
       setName("");

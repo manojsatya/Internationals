@@ -17,3 +17,33 @@ export function getMembers() {
     }
   }).then(res => res.json());
 }
+
+export function getMember(id) {
+  return fetch("/members/" + id, {
+    method: "GET",
+    body: undefined,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(res => res.json());
+}
+
+export function deleteMember(id) {
+  return fetch("/members/" + id, {
+    method: "DELETE",
+    body: undefined,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(res => res.json());
+}
+
+export function getMemberFriends(id) {
+  return fetch("/members/" + id + "/friends", {
+    method: "GET",
+    body: undefined,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(res => res.json());
+}

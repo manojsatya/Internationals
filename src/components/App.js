@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import List from "./List";
 import Define from "./Define";
 import Add from "./Add";
+import Profile from "./Profile";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={List} />
-          <Route exact path="/define" component={Define} />
+          <Route exact path="/define/:id" component={Define} />
           <Route exact path="/add" component={Add} />
+          <Route exact path="/profile/:id" component={Profile} />
         </Switch>
       </Router>
     </div>

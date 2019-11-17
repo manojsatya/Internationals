@@ -9,7 +9,6 @@ export default function NavBar() {
         List
       </NavLinkStyled>
       <NavLinkStyled to="/add">Add International</NavLinkStyled>
-      <NavLinkStyled to="/define">Define</NavLinkStyled>
     </NavBarStyled>
   );
 }

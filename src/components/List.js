@@ -2,23 +2,29 @@ import React, { useState, useEffect } from "react";
 import Title from "./Title";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components/macro";
-import { getMembers } from "./services/services";
+import { getMembers, deleteMember } from "./services/services";
 import Table from "./Table";
 
 export default function List() {
   const [members, setMembers] = useState([]);
-
   useEffect(() => {
     getMembers().then(setMembers);
   }, []);
+
   return (
     <div>
       <Title />
       {/* <h2>List of Internationals</h2> */}
-      <Table members={members} />
+
+      <Table members={members} handleDeleteMember={handleDeleteMember} />
       <AddLinkStyled to="/add">Click to Add International</AddLinkStyled>
     </div>
   );
+
+  function handleDeleteMember(id) {
+    console.log("From List file", id);
+    deleteMember(id);
+  }
 }
 
 const AddLinkStyled = styled(NavLink)`

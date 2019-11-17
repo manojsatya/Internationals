@@ -13,4 +13,29 @@ router.get("/", (req, res) => {
     .catch(err => res.json(err));
 });
 
+router.get("/:id", (req, res) => {
+  Member.find({ _id: req.params.id })
+    .then(member => res.json(member))
+    .catch(err => res.json(err));
+});
+
+router.delete("/:id", async (req, res) => {
+  Member.findByIdAndDelete(req.params.id)
+    .then(member => res.json(member))
+    .catch(err => res.json(err));
+  // const members = await Member.find();
+  // const removeIndex = members.filter(member => member._id === req.params.id);
+
+  // console.log(removeIndex);
+});
+
+router.get("/:id/friends", (req, res) => {
+  Member.findById(req.params.id)
+    .then(member => {
+      const friends = member.friends;
+      res.json(friends);
+    })
+    .catch(err => res.json(err));
+});
+
 module.exports = router;
