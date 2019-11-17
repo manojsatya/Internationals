@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Title from "./Title";
 import styled from "styled-components/macro";
+import { postMember } from "./services/services";
+import { useHistory } from "react-router-dom";
 
 export default function Add() {
   const [country, setCountry] = useState("");
   const [name, setName] = useState("");
   const [nameWarning, setNameWarning] = useState("");
   const [countryWarning, setCountryWarning] = useState("");
+  const history = useHistory();
   return (
     <div>
       <Title />
@@ -59,9 +62,11 @@ export default function Add() {
       setNameWarning("");
       setCountryWarning("");
       console.log(data);
+      postMember(data);
       form.reset();
       setName("");
       setCountry("");
+      history.push("/");
     }
   }
 }
