@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Title from "./Title";
 import { useParams } from "react-router-dom";
-import { getMember, getMembers } from "./services/services";
+import {
+  getMember,
+  getMembers,
+  addFriendship,
+  getMemberFriends
+} from "./services/services";
 import styled from "styled-components/macro";
 import { makeStyles } from "@material-ui/core/styles";
 import TableMatUI from "@material-ui/core/Table";
@@ -14,18 +19,29 @@ import Paper from "@material-ui/core/Paper";
 export default function Define() {
   const { id } = useParams();
   const classes = useStyles();
-  const [member, setMember] = useState([]);
-  useEffect(() => {
-    getMember(id).then(profile => setMember(profile[0]));
-  }, [id]);
+  const [profile, setProfile] = useState([]);
+  const [friends, setFriends] = useState([]);
   const [members, setMembers] = useState([]);
+  useEffect(() => {
+    getMember(id).then(profile => setProfile(profile[0]));
+    getMemberFriends(id).then(friends => setFriends(friends));
+  }, [id]);
   useEffect(() => {
     getMembers().then(setMembers);
   }, []);
+
+  // const chosenMember = members.filter(member => member._id === id);
+  // const filterAlreadyfriends = members.filter(member=>)
+  // console.log(chosenMember);
+  // console.log(friends);
+  // console.log(members);
+  // const combinedList = [...friends, ...members];
+  // console.log(combinedList);
+
   return (
     <div>
       <Title />
-      <HeadlineStyled>Define friendships for {member.name}</HeadlineStyled>
+      <HeadlineStyled>Define friendships for {profile.name}</HeadlineStyled>
       <Paper className={classes.root}>
         <TableMatUI className={classes.table} aria-label="simple table">
           <TableHead className={classes.head}>
@@ -50,7 +66,7 @@ export default function Define() {
                 <TableCell align="center">
                   <button
                     className={classes.profileButton}
-                    // onClick={() => handleViewProfile(member._id)}
+                    onClick={() => handleAddFriend(member)}
                   >
                     Add
                   </button>
@@ -62,6 +78,10 @@ export default function Define() {
       </Paper>
     </div>
   );
+
+  function handleAddFriend(member) {
+    addFriendship(profile._id, member);
+  }
 }
 
 const HeadlineStyled = styled.h2`

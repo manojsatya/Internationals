@@ -111,7 +111,6 @@ export default function Table({ members, handleDeleteMember }) {
   );
 
   function handleViewProfile(id) {
-    // console.log(id);
     history.push("/profile/" + id);
   }
 

@@ -38,4 +38,14 @@ router.get("/:id/friends", (req, res) => {
     .catch(err => res.json(err));
 });
 
+router.patch("/:id/define", async (req, res) => {
+  const member1 = await Member.findById(req.params.id);
+  const member2 = await Member.findById(req.body._id);
+  member1.friends.push(member2);
+  member2.friends.push(member1);
+  await member1.save();
+  await member2.save();
+  res.json(member1);
+});
+
 module.exports = router;
