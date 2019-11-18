@@ -87,7 +87,7 @@ export default function Table({ members, handleDeleteMember }) {
                     className={classes.profileButton}
                     onClick={() => handleViewProfile(member._id)}
                   >
-                    View Profile
+                    View profile
                   </button>
                   <button
                     className={classes.addButton}
