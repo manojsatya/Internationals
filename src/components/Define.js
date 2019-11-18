@@ -24,19 +24,21 @@ export default function Define() {
   const [members, setMembers] = useState([]);
   useEffect(() => {
     getMember(id).then(profile => setProfile(profile[0]));
-    getMemberFriends(id).then(friends => setFriends(friends));
+    // getMemberFriends(id).then(friends => setFriends(friends));
   }, [id]);
   useEffect(() => {
     getMembers().then(setMembers);
   }, []);
+  useEffect(() => {
+    getMemberFriends(id).then(friends => setFriends(friends));
+  }, [id]);
 
-  // const chosenMember = members.filter(member => member._id === id);
-  // const filterAlreadyfriends = members.filter(member=>)
-  // console.log(chosenMember);
-  // console.log(friends);
-  // console.log(members);
-  // const combinedList = [...friends, ...members];
-  // console.log(combinedList);
+  const membersNotFriends = members.filter(
+    member => !friends.find(friend => member._id === friend._id)
+  );
+  const notFriendsList = membersNotFriends.filter(self => self._id !== id);
+  //console.log(membersNotFriends);
+  //console.log(notFriendsList);
 
   return (
     <div>
@@ -59,7 +61,7 @@ export default function Define() {
             </TableRow>
           </TableHead>
           <TableBody className={classes.rows}>
-            {members.map(member => (
+            {notFriendsList.map(member => (
               <TableRow key={member._id}>
                 <TableCell align="center">{member.name}</TableCell>
                 <TableCell align="center">{member.country}</TableCell>
@@ -80,7 +82,7 @@ export default function Define() {
   );
 
   function handleAddFriend(member) {
-    addFriendship(profile._id, member);
+    addFriendship(profile._id, member).then(friends => setFriends(friends));
   }
 }
 

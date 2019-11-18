@@ -14,7 +14,7 @@ export default function List() {
   return (
     <div>
       <Title />
-      {/* <h2>List of Internationals</h2> */}
+      <input type="text" placeholder="Search by name..." />
 
       <Table members={members} handleDeleteMember={handleDeleteMember} />
       <AddLinkStyled to="/add">Click to Add International</AddLinkStyled>

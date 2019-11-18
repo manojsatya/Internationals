@@ -45,7 +45,7 @@ router.patch("/:id/define", async (req, res) => {
   member2.friends.push(member1);
   await member1.save();
   await member2.save();
-  res.json(member1);
+  res.json(member1.friends);
 });
 
 module.exports = router;
