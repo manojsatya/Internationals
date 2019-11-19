@@ -11,7 +11,7 @@ export default function Add() {
   const [countryWarning, setCountryWarning] = useState("");
   const history = useHistory();
   return (
-    <div>
+    <AddPageStyled>
       <Title />
       <FormStyled onSubmit={handleSubmit}>
         <section>
@@ -50,7 +50,7 @@ export default function Add() {
         </section>
         <button type="submit">Add</button>
       </FormStyled>
-    </div>
+    </AddPageStyled>
   );
 
   function handleSubmit(event) {
@@ -76,6 +76,9 @@ export default function Add() {
   }
 }
 
+const AddPageStyled = styled.div`
+  margin-top: 120px;
+`;
 const InputStyled = styled.input`
   width: 200px;
   height: 30px;

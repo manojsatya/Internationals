@@ -8,50 +8,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-    overflowX: "auto",
-    marginTop: "10px"
-  },
-  table: {
-    minWidth: 650
-  },
-  head: {
-    backgroundColor: "#22e0cd"
-  },
-  headerFont: {
-    fontSize: "1.2rem",
-    color: "white"
-  },
-  rows: {
-    padding: "30px"
-  },
-  profileButton: {
-    backgroundColor: "#22e0cd",
-    borderRadius: "0.4rem",
-    height: "25px",
-    outline: "none",
-    width: "80px"
-  },
-  addButton: {
-    backgroundColor: "green",
-    borderRadius: "0.4rem",
-    height: "25px",
-    outline: "none",
-    color: "white",
-    width: "80px"
-  },
-  deleteButton: {
-    backgroundColor: "red",
-    borderRadius: "0.4rem",
-    height: "25px",
-    outline: "none",
-    color: "black",
-    width: "80px"
-  }
-});
-
 export default function Table({ members, handleDeleteMember }) {
   const classes = useStyles();
   const history = useHistory();
@@ -123,3 +79,48 @@ export default function Table({ members, handleDeleteMember }) {
   //     handleDeleteMember(id);
   //   }
 }
+
+const useStyles = makeStyles({
+  root: {
+    width: "80%",
+    // overflowX: "auto",
+    margin: "0 auto",
+    marginTop: "10px"
+  },
+  table: {
+    minWidth: 650
+  },
+  head: {
+    backgroundColor: "#22e0cd"
+  },
+  headerFont: {
+    fontSize: "1.2rem",
+    color: "white"
+  },
+  rows: {
+    padding: "30px"
+  },
+  profileButton: {
+    backgroundColor: "#22e0cd",
+    borderRadius: "0.4rem",
+    height: "25px",
+    outline: "none",
+    width: "80px"
+  },
+  addButton: {
+    backgroundColor: "green",
+    borderRadius: "0.4rem",
+    height: "25px",
+    outline: "none",
+    color: "white",
+    width: "80px"
+  },
+  deleteButton: {
+    backgroundColor: "red",
+    borderRadius: "0.4rem",
+    height: "25px",
+    outline: "none",
+    color: "black",
+    width: "80px"
+  }
+});

@@ -24,12 +24,14 @@ export default function Profile() {
   }, [id]);
   //   console.log(profile);
   return (
-    <>
+    <ProfileStyled>
       <Title />
       <HeadlineStyled>{profile.name}'s profile </HeadlineStyled>
-      <h3>Country of Origin: {profile.country}</h3>
-      <h3>Number of friends: {friends.length}</h3>
-      <h3>{profile.name}'s friends</h3>
+      <DetailsStyled>
+        <h3>Country of Origin: {profile.country}</h3>
+        <h3>Number of friends: {friends.length}</h3>
+      </DetailsStyled>
+      <HeadlineStyled>{profile.name}'s friends</HeadlineStyled>
 
       {friends.length > 0 && (
         <Paper className={classes.root}>
@@ -67,7 +69,7 @@ export default function Profile() {
           </TableMatUI>
         </Paper>
       )}
-    </>
+    </ProfileStyled>
   );
 
   function handleViewProfile(id) {
@@ -75,14 +77,29 @@ export default function Profile() {
   }
 }
 
+const ProfileStyled = styled.div`
+  margin-top: 120px;
+`;
 const HeadlineStyled = styled.h2`
   text-align: center;
+  color: #22e0cd;
+`;
+
+const DetailsStyled = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto 20px;
+  h3 {
+    margin: 10px;
+  }
 `;
 
 const useStyles = makeStyles({
   root: {
-    width: "100%",
-    overflowX: "auto",
+    width: "80%",
+    // overflowX: "auto",
+    margin: "0 auto",
     marginTop: "10px"
   },
   table: {

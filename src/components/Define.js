@@ -41,7 +41,7 @@ export default function Define() {
   //console.log(notFriendsList);
 
   return (
-    <div>
+    <DefinePageStyled>
       <Title />
       <HeadlineStyled>Define friendships for {profile.name}</HeadlineStyled>
       <Paper className={classes.root}>
@@ -78,22 +78,25 @@ export default function Define() {
           </TableBody>
         </TableMatUI>
       </Paper>
-    </div>
+    </DefinePageStyled>
   );
 
   function handleAddFriend(member) {
     addFriendship(profile._id, member).then(friends => setFriends(friends));
   }
 }
-
+const DefinePageStyled = styled.div`
+  margin-top: 120px;
+`;
 const HeadlineStyled = styled.h2`
   text-align: center;
 `;
 
 const useStyles = makeStyles({
   root: {
-    width: "100%",
-    overflowX: "auto",
+    width: "80%",
+    // overflowX: "auto",
+    margin: "0 auto",
     marginTop: "10px"
   },
   table: {

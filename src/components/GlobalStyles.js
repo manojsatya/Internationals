@@ -6,12 +6,9 @@ export default createGlobalStyle`
 }
 
 body{
-    margin: 0;
+    margin: 0px 0px 20px 0px;
     font-family: "Helvetica Neue", Helvetica, Arial , sans-serif;
-}
-
-html{
-    margin: 0px 40px 20px 40px;
+    background-color: #ffffff;
 }
 
 

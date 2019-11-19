@@ -56,7 +56,15 @@ export default function List() {
           Clear search
         </ClearButtonStyled>
       </SearchBarStyled>
-      <Table members={filterMembers} handleDeleteMember={handleDeleteMember} />
+      {members.length === 0 && (
+        <h3>Click Add International to add International</h3>
+      )}
+      {members.length > 0 && (
+        <Table
+          members={filterMembers}
+          handleDeleteMember={handleDeleteMember}
+        />
+      )}
       <AddLinkStyled to="/add">Click to Add International</AddLinkStyled>
     </div>
   );
@@ -113,5 +121,7 @@ const SearchBarStyled = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px;
+  margin: 10px auto;
+  width: 70%;
+  margin-top: 120px;
 `;
