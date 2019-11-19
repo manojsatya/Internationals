@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Title from "./Title";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components/macro";
 import { getMembers, deleteMember } from "./services/services";
 import Table from "./Table";
@@ -59,7 +58,9 @@ export default function List() {
         </ClearButtonStyled>
       </SearchBarStyled>
       {members.length === 0 && (
-        <h3>Click Add International to add International</h3>
+        <HeadlineStyled>
+          Click Add International to add International
+        </HeadlineStyled>
       )}
       {members.length > 0 && (
         <Table
@@ -67,7 +68,7 @@ export default function List() {
           handleDeleteMember={handleDeleteMember}
         />
       )}
-      <AddLinkStyled to="/add">Click to Add International</AddLinkStyled>
+      {/* <AddLinkStyled to="/add">Click to Add International</AddLinkStyled> */}
     </div>
   );
 
@@ -84,18 +85,10 @@ export default function List() {
 }
 
 //styling
-const AddLinkStyled = styled(NavLink)`
-  display: flex;
-  justify-content: center;
-  width: 250px;
-  text-decoration: none;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 1rem;
-  margin: 20px;
-  :hover {
-    background-color: #22e0cd;
-  }
+
+const HeadlineStyled = styled.h2`
+  text-align: center;
+  color: #22e0cd;
 `;
 
 const InputStyled = styled.input`
