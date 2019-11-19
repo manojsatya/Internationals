@@ -6,6 +6,7 @@ import { getMembers, deleteMember } from "./services/services";
 import Table from "./Table";
 
 export default function List() {
+  //Hooks to manage the state of the component
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState("");
   const [country, setCountry] = useState("");
@@ -13,6 +14,7 @@ export default function List() {
     getMembers().then(setMembers);
   }, []);
 
+  //filter members when search query is used for name or/and country selected by drop down
   const filterMembers = members
     .filter(
       member => member.name.toLowerCase().indexOf(search.toLowerCase()) !== -1
@@ -74,12 +76,14 @@ export default function List() {
     deleteMember(id);
   }
 
+  //function to clear search queries
   function handleClearSearch() {
     setSearch("");
     setCountry("");
   }
 }
 
+//styling
 const AddLinkStyled = styled(NavLink)`
   display: flex;
   justify-content: center;

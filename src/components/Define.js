@@ -17,6 +17,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 export default function Define() {
+  //React hooks to manage the state of this component
   const { id } = useParams();
   const classes = useStyles();
   const [profile, setProfile] = useState([]);
@@ -24,21 +25,19 @@ export default function Define() {
   const [members, setMembers] = useState([]);
   useEffect(() => {
     getMember(id).then(profile => setProfile(profile[0]));
-    // getMemberFriends(id).then(friends => setFriends(friends));
+    getMemberFriends(id).then(friends => setFriends(friends));
   }, [id]);
   useEffect(() => {
     getMembers().then(setMembers);
   }, []);
-  useEffect(() => {
-    getMemberFriends(id).then(friends => setFriends(friends));
-  }, [id]);
 
+  //filter members who are not friends with the member selected
   const membersNotFriends = members.filter(
     member => !friends.find(friend => member._id === friend._id)
   );
+
+  //filter out selected member because one cannot define friendship with himself
   const notFriendsList = membersNotFriends.filter(self => self._id !== id);
-  //console.log(membersNotFriends);
-  //console.log(notFriendsList);
 
   return (
     <DefinePageStyled>
@@ -81,10 +80,14 @@ export default function Define() {
     </DefinePageStyled>
   );
 
+  //function to define friendship when add button was clicked for a particular member
+  //returns the list of friends of the current member and sets it
   function handleAddFriend(member) {
     addFriendship(profile._id, member).then(friends => setFriends(friends));
   }
 }
+
+//Styling
 const DefinePageStyled = styled.div`
   margin-top: 120px;
 `;
@@ -92,6 +95,7 @@ const HeadlineStyled = styled.h2`
   text-align: center;
 `;
 
+//Table styled using MaterialUI
 const useStyles = makeStyles({
   root: {
     width: "80%",

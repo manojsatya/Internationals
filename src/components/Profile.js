@@ -13,6 +13,7 @@ import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
 
 export default function Profile() {
+  //Hooks to manage the state of the component
   const { id } = useParams();
   const classes = useStyles();
   const history = useHistory();
@@ -22,7 +23,7 @@ export default function Profile() {
     getMember(id).then(profile => setProfile(profile[0]));
     getMemberFriends(id).then(friends => setFriends(friends));
   }, [id]);
-  //   console.log(profile);
+
   return (
     <ProfileStyled>
       <Title />
@@ -72,11 +73,13 @@ export default function Profile() {
     </ProfileStyled>
   );
 
+  //function to redirect to profile page of member when "view profile" is clicked
   function handleViewProfile(id) {
     history.push("/profile/" + id);
   }
 }
 
+//styling
 const ProfileStyled = styled.div`
   margin-top: 120px;
 `;

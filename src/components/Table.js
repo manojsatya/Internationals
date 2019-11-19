@@ -9,6 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
 
 export default function Table({ members, handleDeleteMember }) {
+  //Hooks to manage the state of the components
   const classes = useStyles();
   const history = useHistory();
 
@@ -66,10 +67,12 @@ export default function Table({ members, handleDeleteMember }) {
     </>
   );
 
+  //function to redirect of profile page of selected member when "view profile" is clicked
   function handleViewProfile(id) {
     history.push("/profile/" + id);
   }
 
+  //function to redirect to define page when "add friend" is clicked
   function handleAddFriend(id) {
     history.push("/define/" + id);
   }
@@ -80,6 +83,7 @@ export default function Table({ members, handleDeleteMember }) {
   //   }
 }
 
+//styling
 const useStyles = makeStyles({
   root: {
     width: "80%",

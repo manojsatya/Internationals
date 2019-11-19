@@ -5,11 +5,15 @@ import { postMember } from "./services/services";
 import { useHistory } from "react-router-dom";
 
 export default function Add() {
+  //React Hooks to manage state of this component
   const [country, setCountry] = useState("");
   const [name, setName] = useState("");
   const [nameWarning, setNameWarning] = useState("");
   const [countryWarning, setCountryWarning] = useState("");
+
+  //Route history to redirect
   const history = useHistory();
+
   return (
     <AddPageStyled>
       <Title />
@@ -53,11 +57,13 @@ export default function Add() {
     </AddPageStyled>
   );
 
+  //function to (send data / add a new member) from client to server
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
+    //Form validation checks
     if (data.name === "") {
       setNameWarning("*Please enter name");
     } else if (data.country === "") {
@@ -66,7 +72,6 @@ export default function Add() {
     } else {
       setNameWarning("");
       setCountryWarning("");
-      // console.log(data);
       postMember(data);
       form.reset();
       setName("");
@@ -76,6 +81,7 @@ export default function Add() {
   }
 }
 
+//Styling for this component
 const AddPageStyled = styled.div`
   margin-top: 120px;
 `;
