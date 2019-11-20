@@ -33,7 +33,7 @@ export default function List() {
           value={search}
           onChange={event => setSearch(event.target.value)}
         />
-        <section>
+        <SelectSectionStyled>
           <LabelStyled>Search by country of origin:</LabelStyled>
           <SelectStyled
             onChange={event => setCountry(event.target.value)}
@@ -52,7 +52,7 @@ export default function List() {
             <option value="Portugal">Portugal</option>
             <option value="Argentina">Argentina</option>
           </SelectStyled>
-        </section>
+        </SelectSectionStyled>
         <ClearButtonStyled onClick={handleClearSearch}>
           Clear search
         </ClearButtonStyled>
@@ -88,30 +88,53 @@ export default function List() {
 
 const HeadlineStyled = styled.h2`
   text-align: center;
-  color: #22e0cd;
+  color: var(--colorTheme);
 `;
 
 const InputStyled = styled.input`
   height: 25px;
   width: 25%;
   border-radius: 0.3rem;
+  border: 1px solid var(--colorTheme);
+  @media only screen and (max-width: 620px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 const LabelStyled = styled.label`
   margin: 10px;
+  @media only screen and (max-width: 620px) {
+    font-size: 0.8rem;
+  }
 `;
 const SelectStyled = styled.select`
   width: 120px;
-  height: 25px;
   outline: none;
   font-size: 1.1rem;
+  @media only screen and (max-width: 620px) {
+    font-size: 0.8rem;
+  }
+`;
+
+const SelectSectionStyled = styled.section`
+  @media only screen and (max-width: 620px) {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 5px auto;
+  }
 `;
 
 const ClearButtonStyled = styled.button`
-  background-color: #22e0cd;
+  background-color: var(--colorTheme);
   border-radius: 0.4rem;
   height: 25px;
   outline: none;
   width: 80px;
+  @media only screen and (max-width: 620px) {
+    margin: 0 auto;
+    width: 80%;
+  }
 `;
 
 const SearchBarStyled = styled.section`
@@ -121,4 +144,10 @@ const SearchBarStyled = styled.section`
   margin: 10px auto;
   width: 70%;
   margin-top: 120px;
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
+  @media only screen and (max-width: 620px) {
+    flex-direction: column;
+  }
 `;

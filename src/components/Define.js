@@ -59,12 +59,16 @@ export default function Define() {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody className={classes.rows}>
+          <TableBody>
             {notFriendsList.map(member => (
-              <TableRow key={member._id}>
-                <TableCell align="center">{member.name}</TableCell>
-                <TableCell align="center">{member.country}</TableCell>
-                <TableCell align="center">
+              <TableRow key={member._id} className={classes.rows}>
+                <TableCell align="center" className={classes.cell}>
+                  {member.name}
+                </TableCell>
+                <TableCell align="center" className={classes.cell}>
+                  {member.country}
+                </TableCell>
+                <TableCell align="center" className={classes.cell}>
                   <button
                     className={classes.profileButton}
                     onClick={() => handleAddFriend(member)}
@@ -93,35 +97,61 @@ const DefinePageStyled = styled.div`
 `;
 const HeadlineStyled = styled.h2`
   text-align: center;
+  @media only screen and (max-width: 620px) {
+    font-size: 0.8rem;
+  }
 `;
 
 //Table styled using MaterialUI
 const useStyles = makeStyles({
   root: {
     width: "80%",
-    // overflowX: "auto",
     margin: "0 auto",
-    marginTop: "10px"
-  },
-  table: {
-    minWidth: 650
+    marginTop: "10px",
+    "@media(max-width: 450px)": {
+      textAlign: "center"
+    },
+    "@media(max-width: 400px)": {
+      fontSize: "0.6rem"
+    }
   },
   head: {
-    backgroundColor: "#22e0cd"
+    backgroundColor: "var(--colorTheme)"
   },
   headerFont: {
     fontSize: "1.2rem",
-    color: "white"
+    color: "white",
+    "@media(max-width: 820px)": {
+      fontSize: "1.0rem"
+    },
+    "@media(max-width: 450px)": {
+      fontSize: "0.7rem",
+      padding: "0"
+    }
   },
   rows: {
-    padding: "30px"
+    "&:hover": {
+      backgroundColor: "whitesmoke"
+    },
+    "@media(max-width: 820px)": {
+      display: "table-row"
+    }
+  },
+  cell: {
+    "@media(max-width: 450px)": {
+      fontSize: "0.6rem",
+      padding: "5px"
+    }
   },
   profileButton: {
-    backgroundColor: "#22e0cd",
+    backgroundColor: "var(--colorTheme)",
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    width: "80px"
+    width: "80px",
+    "@media(max-width: 450px)": {
+      fontSize: "0.6rem"
+    }
   },
   addButton: {
     backgroundColor: "green",

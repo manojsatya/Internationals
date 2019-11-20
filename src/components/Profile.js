@@ -51,12 +51,16 @@ export default function Profile() {
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody className={classes.rows}>
+            <TableBody>
               {friends.map(friend => (
-                <TableRow key={friend._id}>
-                  <TableCell align="center">{friend.name}</TableCell>
-                  <TableCell align="center">{friend.country}</TableCell>
-                  <TableCell align="center">
+                <TableRow key={friend._id} className={classes.rows}>
+                  <TableCell align="center" className={classes.cell}>
+                    {friend.name}
+                  </TableCell>
+                  <TableCell align="center" className={classes.cell}>
+                    {friend.country}
+                  </TableCell>
+                  <TableCell align="center" className={classes.cell}>
                     <button
                       className={classes.profileButton}
                       onClick={() => handleViewProfile(friend._id)}
@@ -85,7 +89,10 @@ const ProfileStyled = styled.div`
 `;
 const HeadlineStyled = styled.h2`
   text-align: center;
-  color: #22e0cd;
+  color: var(--colorTheme);
+  @media only screen and (max-width: 620px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const DetailsStyled = styled.section`
@@ -95,34 +102,76 @@ const DetailsStyled = styled.section`
   margin: auto 20px;
   h3 {
     margin: 10px;
+    @media only screen and (max-width: 620px) {
+      font-size: 0.8rem;
+    }
   }
 `;
 
 const useStyles = makeStyles({
   root: {
     width: "80%",
-    // overflowX: "auto",
     margin: "0 auto",
-    marginTop: "10px"
-  },
-  table: {
-    minWidth: 650
+    marginTop: "10px",
+    "@media(max-width: 450px)": {
+      textAlign: "center"
+    },
+    "@media(max-width: 400px)": {
+      fontSize: "0.6rem"
+    }
   },
   head: {
-    backgroundColor: "#22e0cd"
+    backgroundColor: "var(--colorTheme)"
   },
   headerFont: {
     fontSize: "1.2rem",
-    color: "white"
+    color: "white",
+    "@media(max-width: 820px)": {
+      fontSize: "1.0rem"
+    },
+    "@media(max-width: 450px)": {
+      fontSize: "0.7rem",
+      padding: "0"
+    }
   },
   rows: {
-    padding: "30px"
+    "&:hover": {
+      backgroundColor: "whitesmoke"
+    },
+    "@media(max-width: 820px)": {
+      display: "table-row"
+    }
+  },
+  cell: {
+    "@media(max-width: 450px)": {
+      fontSize: "0.6rem",
+      padding: "5px"
+    }
   },
   profileButton: {
-    backgroundColor: "#22e0cd",
+    backgroundColor: "var(--colorTheme)",
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
+    width: "80px",
+    "@media(max-width: 450px)": {
+      fontSize: "0.6rem"
+    }
+  },
+  addButton: {
+    backgroundColor: "green",
+    borderRadius: "0.4rem",
+    height: "25px",
+    outline: "none",
+    color: "white",
+    width: "80px"
+  },
+  deleteButton: {
+    backgroundColor: "red",
+    borderRadius: "0.4rem",
+    height: "25px",
+    outline: "none",
+    color: "black",
     width: "80px"
   }
 });

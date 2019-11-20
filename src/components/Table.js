@@ -14,57 +14,61 @@ export default function Table({ members, handleDeleteMember }) {
   const history = useHistory();
 
   return (
-    <>
-      <Paper className={classes.root}>
-        <TableMatUI className={classes.table} aria-label="simple table">
-          <TableHead className={classes.head}>
-            <TableRow>
-              <TableCell align="center" className={classes.headerFont}>
-                NAME
+    <Paper className={classes.root}>
+      <TableMatUI className={classes.table} aria-label="simple table">
+        <TableHead className={classes.head}>
+          <TableRow>
+            <TableCell align="center" className={classes.headerFont}>
+              NAME
+            </TableCell>
+            <TableCell align="center" className={classes.headerFont}>
+              COUNTRY OF ORIGIN
+            </TableCell>
+            <TableCell align="center" className={classes.headerFont}>
+              NUMBER OF FRIENDS
+            </TableCell>
+            <TableCell align="center" className={classes.headerFont}>
+              ACTION
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {members.map(member => (
+            <TableRow key={member._id} className={classes.rows}>
+              <TableCell align="center" className={classes.cell}>
+                {member.name}
               </TableCell>
-              <TableCell align="center" className={classes.headerFont}>
-                COUNTRY OF ORIGIN
+              <TableCell align="center" className={classes.cell}>
+                {member.country}
               </TableCell>
-              <TableCell align="center" className={classes.headerFont}>
-                NUMBER OF FRIENDS
+              <TableCell align="center" className={classes.cell}>
+                {member.friends.length}
               </TableCell>
-              <TableCell align="center" className={classes.headerFont}>
-                ACTION
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody className={classes.rows}>
-            {members.map(member => (
-              <TableRow key={member._id}>
-                <TableCell align="center">{member.name}</TableCell>
-                <TableCell align="center">{member.country}</TableCell>
-                <TableCell align="center">{member.friends.length}</TableCell>
-                <TableCell align="center">
-                  <button
-                    className={classes.profileButton}
-                    onClick={() => handleViewProfile(member._id)}
-                  >
-                    View profile
-                  </button>
-                  <button
-                    className={classes.addButton}
-                    onClick={() => handleAddFriend(member._id)}
-                  >
-                    Add friend
-                  </button>
-                  {/* <button
+              <TableCell align="center" className={classes.cell}>
+                <button
+                  className={classes.profileButton}
+                  onClick={() => handleViewProfile(member._id)}
+                >
+                  View profile
+                </button>
+                <button
+                  className={classes.addButton}
+                  onClick={() => handleAddFriend(member._id)}
+                >
+                  Add friend
+                </button>
+                {/* <button
                   className={classes.deleteButton}
                   onClick={() => handleDelete(member._id)}
                 >
                   Delete
                 </button> */}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </TableMatUI>
-      </Paper>
-    </>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </TableMatUI>
+    </Paper>
   );
 
   //function to redirect of profile page of selected member when "view profile" is clicked
@@ -87,29 +91,52 @@ export default function Table({ members, handleDeleteMember }) {
 const useStyles = makeStyles({
   root: {
     width: "80%",
-    // overflowX: "auto",
     margin: "0 auto",
-    marginTop: "10px"
-  },
-  table: {
-    minWidth: 650
+    marginTop: "10px",
+    "@media(max-width: 450px)": {
+      textAlign: "center"
+    },
+    "@media(max-width: 400px)": {
+      fontSize: "0.6rem"
+    }
   },
   head: {
-    backgroundColor: "#22e0cd"
+    backgroundColor: "var(--colorTheme)"
   },
   headerFont: {
     fontSize: "1.2rem",
-    color: "white"
+    color: "white",
+    "@media(max-width: 820px)": {
+      fontSize: "1.0rem"
+    },
+    "@media(max-width: 450px)": {
+      fontSize: "0.7rem",
+      padding: "0"
+    }
   },
   rows: {
-    padding: "30px"
+    "&:hover": {
+      backgroundColor: "whitesmoke"
+    },
+    "@media(max-width: 820px)": {
+      display: "table-row"
+    }
+  },
+  cell: {
+    "@media(max-width: 450px)": {
+      fontSize: "0.6rem",
+      padding: "5px"
+    }
   },
   profileButton: {
-    backgroundColor: "#22e0cd",
+    backgroundColor: "var(--colorTheme)",
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    width: "80px"
+    width: "80px",
+    "@media(max-width: 450px)": {
+      fontSize: "0.6rem"
+    }
   },
   addButton: {
     backgroundColor: "green",

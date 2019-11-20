@@ -13,10 +13,16 @@ export default function Title() {
 
 const HeaderStyled = styled.section`
   font-family: sans-serif;
-  color: #22e0cd;
-  font-size: 3rem;
+  color: var(--colorTheme);
   text-align: center;
-  margin: 20px;
+  @media only screen and (min-width: 768px) {
+    font-size: 3rem;
+    margin: 20px;
+    padding: 0;
+  }
+
+  font-size: 2rem;
+  margin: 10px;
   padding: 0;
 `;
 
@@ -25,9 +31,13 @@ const TitleStyled = styled.div`
   background-color: white;
   top: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.25);
   width: 100%;
-  height: 100px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.25);
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+  }
+  flex-direction: column;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.25);
 `;

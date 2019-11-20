@@ -52,7 +52,7 @@ export default function Add() {
           </SelectStyled>
           <FormWarnings>{countryWarning}</FormWarnings>
         </section>
-        <button type="submit">Add</button>
+        <AddButtonStyled type="submit">Add</AddButtonStyled>
       </FormStyled>
     </AddPageStyled>
   );
@@ -86,8 +86,10 @@ const AddPageStyled = styled.div`
   margin-top: 120px;
 `;
 const InputStyled = styled.input`
-  width: 200px;
+  width: 180px;
   height: 30px;
+  border: 1px solid var(--colorTheme);
+  outline: none;
 `;
 
 const FormStyled = styled.form`
@@ -108,8 +110,13 @@ const SelectStyled = styled.select`
   height: 30px;
   outline: none;
   font-size: 1.1rem;
+  border: 1px solid var(--colorTheme);
 `;
 
 const FormWarnings = styled.p`
   color: red;
+`;
+
+const AddButtonStyled = styled.button`
+  background-color: var(--colorTheme);
 `;
