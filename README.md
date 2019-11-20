@@ -1,68 +1,87 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Internationals app
 
-## Available Scripts
+The **Internationals** app was coding challenge giving my company [Localyze](https://www.localyze.de/).
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Acknowledgements](#Acknowledgements)
+- [Images](#images)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Introduction
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+With this app, one can add an employee (we call "internationals") with thier country of origin. After adding one can define friendships with already existing members. Friendship is a two way relationship. For eg:- When David adds Sarah as a friend, Sarah is also a friend of David.
 
-### `npm test`
+### Functionalities
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- One can add an International using a form
+- One can add friends by choosing.
+- The index page shows all the existing members with thier country of origin, number of friends and links to thier profile
+- When viewing a profile, it displays name and country along with links to his/her friends page
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app was built [create-react-app](https://create-react-app.dev/) and MERN Stack:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- MongoDB
+- Express
+- React
+- Node.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Additional dependencies
 
-### `npm run eject`
+- cors
+- mongoose
+- react-router-dom
+- react-scripts
+- styled-components
+- material-ui
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Dev dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- cypress
+- eslint-plugin-cypress
+- nodemon
+- npm-run-all
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Setup
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Clone the repository
 
-## Learn More
+```
+https://github.com/manojsatya/Internationals.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Install the dependencies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm install
+```
 
-### Code Splitting
+3. You need to install MongoDB or already installed. It can reachable by default port [http://localhost:27017](http://localhost:27017)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+4. Run the app using below command
 
-### Analyzing the Bundle Size
+```
+npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Images
 
-### Making a Progressive Web App
+### Index page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+<img src="./public/Internationals_screenshot.png">
 
-### Advanced Configuration
+### Define friendship page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+<img src="./public/Define_friend.png">
 
-### Deployment
+### Profile page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+<img src="./public/Profile_page.png">
 
-### `npm run build` fails to minify
+## Acknowledgements
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- I would like to thank the entire team of Localyze for giving me this coding challenge
