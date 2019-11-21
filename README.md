@@ -1,13 +1,12 @@
 # Internationals app
 
-The **Internationals** app was coding challenge giving my company [Localyze](https://www.localyze.de/).
+The **Internationals** app was a coding challenge giving by the company [Localyze](https://www.localyze.de/)
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Acknowledgements](#Acknowledgements)
 - [Images](#images)
 
 ## Introduction
@@ -16,8 +15,8 @@ With this app, one can add an employee (we call "internationals") with thier cou
 
 ### Functionalities
 
-- One can add an International using a form
-- One can add friends by choosing.
+- One can add an International using a form and remove
+- One can add friends/unfriend by choosing.
 - The index page shows all the existing members with thier country of origin, number of friends and links to thier profile
 - When viewing a profile, it displays name and country along with links to his/her friends page
 
@@ -36,6 +35,7 @@ The app was built [create-react-app](https://create-react-app.dev/) and MERN Sta
 - mongoose
 - react-router-dom
 - react-scripts
+- prop-types
 - styled-components
 - material-ui
 
@@ -45,6 +45,12 @@ The app was built [create-react-app](https://create-react-app.dev/) and MERN Sta
 - eslint-plugin-cypress
 - nodemon
 - npm-run-all
+
+### Development tools
+
+- Visual Studio Code
+- Postman
+- MongoDB compass
 
 ## Setup
 
@@ -68,6 +74,14 @@ npm install
 npm start
 ```
 
+5. Run cypress test by running below command
+
+```
+npm run cypress
+```
+
+Click Run all specs to run all test or click individual spec
+
 ## Images
 
 ### Index page
@@ -81,7 +95,3 @@ npm start
 ### Profile page
 
 <img src="./public/Profile_page.png">
-
-## Acknowledgements
-
-- I would like to thank the entire team of Localyze for giving me this coding challenge
