@@ -57,12 +57,12 @@ export default function Table({ members, handleDeleteMember }) {
                 >
                   Add friend
                 </button>
-                {/* <button
+                <button
                   className={classes.deleteButton}
                   onClick={() => handleDelete(member._id)}
                 >
-                  Delete
-                </button> */}
+                  Remove
+                </button>
               </TableCell>
             </TableRow>
           ))}
@@ -81,10 +81,9 @@ export default function Table({ members, handleDeleteMember }) {
     history.push("/define/" + id);
   }
 
-  //   function handleDelete(id) {
-  //     console.log("From Table file", id);
-  //     handleDeleteMember(id);
-  //   }
+  function handleDelete(id) {
+    handleDeleteMember(id);
+  }
 }
 
 //styling
@@ -133,8 +132,7 @@ const useStyles = makeStyles({
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    width: "80px",
-    "@media(max-width: 450px)": {
+    "@media(max-width: 520px)": {
       fontSize: "0.6rem"
     }
   },
@@ -143,15 +141,13 @@ const useStyles = makeStyles({
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    color: "white",
-    width: "80px"
+    color: "white"
   },
   deleteButton: {
     backgroundColor: "red",
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    color: "black",
-    width: "80px"
+    color: "white"
   }
 });

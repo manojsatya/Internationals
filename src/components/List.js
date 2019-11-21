@@ -73,8 +73,7 @@ export default function List() {
   );
 
   function handleDeleteMember(id) {
-    console.log("From List file", id);
-    deleteMember(id);
+    deleteMember(id).then(setMembers);
   }
 
   //function to clear search queries
@@ -130,7 +129,6 @@ const ClearButtonStyled = styled.button`
   border-radius: 0.4rem;
   height: 25px;
   outline: none;
-  width: 80px;
   @media only screen and (max-width: 620px) {
     margin: 0 auto;
     width: 80%;

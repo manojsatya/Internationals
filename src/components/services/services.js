@@ -75,3 +75,16 @@ export function addFriendship(id, data) {
     }
   }).then(res => res.json());
 }
+
+//@func remove friendship between members
+//@data req.param.id and req.body
+//@method PATCH /members/:id/define
+export function removeFriendship(id, data) {
+  return fetch("/members/" + id + "/friends", {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(res => res.json());
+}

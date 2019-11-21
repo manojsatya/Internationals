@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getMember, getMemberFriends } from "./services/services";
+import {
+  getMember,
+  getMemberFriends,
+  removeFriendship
+} from "./services/services";
 import Title from "./Title";
 import styled from "styled-components/macro";
 import { makeStyles } from "@material-ui/core/styles";
@@ -67,6 +71,12 @@ export default function Profile() {
                     >
                       View profile
                     </button>
+                    <button
+                      className={classes.unfriendButton}
+                      onClick={() => handleUnfriend(id, friend)}
+                    >
+                      Unfriend
+                    </button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -80,6 +90,12 @@ export default function Profile() {
   //function to redirect to profile page of member when "view profile" is clicked
   function handleViewProfile(id) {
     history.push("/profile/" + id);
+  }
+
+  function handleUnfriend(profileId, friend) {
+    // console.log("Profile ID: ", profileId);
+    // console.log("Unfriend : ", friend);
+    removeFriendship(profileId, friend).then(setFriends);
   }
 }
 
@@ -153,7 +169,7 @@ const useStyles = makeStyles({
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    width: "80px",
+
     "@media(max-width: 450px)": {
       fontSize: "0.6rem"
     }
@@ -163,15 +179,13 @@ const useStyles = makeStyles({
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    color: "white",
-    width: "80px"
+    color: "white"
   },
-  deleteButton: {
+  unfriendButton: {
     backgroundColor: "red",
     borderRadius: "0.4rem",
     height: "25px",
     outline: "none",
-    color: "black",
-    width: "80px"
+    color: "white"
   }
 });
