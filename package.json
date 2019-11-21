@@ -25,10 +25,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "npm install && npm run build",
+    "cypress": "cypress open"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:cypress/recommended"
+    ]
   },
   "browserslist": {
     "production": [
@@ -41,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^3.6.1",
+    "eslint-plugin-cypress": "^2.7.0"
   }
 }
