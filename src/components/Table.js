@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import TableMatUI from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,6 +8,12 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
+
+//Check prop types
+Table.propTypes = {
+  members: PropTypes.array,
+  handleDeleteMember: PropTypes.func
+};
 
 export default function Table({ members, handleDeleteMember }) {
   //Hooks to manage the state of the components
