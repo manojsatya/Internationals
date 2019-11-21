@@ -93,8 +93,6 @@ export default function Profile() {
   }
 
   function handleUnfriend(profileId, friend) {
-    // console.log("Profile ID: ", profileId);
-    // console.log("Unfriend : ", friend);
     removeFriendship(profileId, friend).then(setFriends);
   }
 }

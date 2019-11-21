@@ -68,7 +68,6 @@ export default function List() {
           handleDeleteMember={handleDeleteMember}
         />
       )}
-      {/* <AddLinkStyled to="/add">Click to Add International</AddLinkStyled> */}
     </div>
   );
 
